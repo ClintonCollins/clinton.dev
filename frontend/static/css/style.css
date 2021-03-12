@@ -167,7 +167,7 @@ html {
 }
 
 .active-link {
-    color: #0072ff !important;
+    color: #0051b4 !important;
 }
 
 .hidden {
@@ -586,9 +586,9 @@ h2.sector {
 }
 
 .mini-footer p a {
-    color: #ffc176
+    color: #ffdfb8
 }
 
 .mini-footer p a:hover {
-    color: #ff9547
+    color: #ffd700
 }
