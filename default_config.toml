@@ -1,0 +1,20 @@
+# Postmark Server token
+PostmarkServerToken = "ServerToken"
+
+# Postmark Account token
+PostmarkAccountToken = "AccountToken"
+
+# Web Server Host/IP. Leave blank to match all interfaces.
+WebServerIP = ""
+
+# Web Server port.
+WebServerPort = "8000"
+
+# Should static files be served by this application or handled by another webserver like Nginx?
+ServeStaticFiles = true
+
+# Where contact emails should be sent from.
+ContactFormFromEmail = "contact@example.com"
+
+# Where to send contact emails to.
+ContactFormToEmail = "me@example.com"

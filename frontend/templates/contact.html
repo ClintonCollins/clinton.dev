@@ -1,0 +1,95 @@
+{{ define "title" }}Clinton Collins - Contact {{ end }}
+
+{{ define "head" }}
+{{ end }}
+
+
+{{ define "content" }}
+
+<section class="pt-2 pb-4" id="contact" style="background: -webkit-linear-gradient(left, #0072ff, #00c6ff);">
+    <form id="contactForm" action="contact" method="post">
+        <div class="container contact-container">
+            <div class="contact-image">
+                <img src="static/img/envelope-open-text-solid.svg" alt="envelope"/>
+            </div>
+            <h3>Interested in my work? Feel free to contact me below.</h3>
+            <div class="row squeeze hidden animate__animated  animate__fadeIn" id="contactSuccess">
+                <div class="col alert alert-success">
+                    <h5 class="text-center">Your message has been received.</h5>
+                    <p id="successMessage" class="text-center">Thank you, I'll be in contact with your shortly!</p>
+                </div>
+            </div>
+            <div class="row squeeze hidden animate__animated  animate__fadeIn" id="contactError">
+                <div class="col alert alert-danger">
+                    <h5 class="text-center">There was an error sending your message.</h5>
+                    <ul id="formErrors"></ul>
+                </div>
+            </div>
+            {{ if .formSuccess }}
+            <div class="row squeeze animate__animated  animate__fadeIn" id="success-alert">
+                <div class="col alert alert-success">
+                    <h5 class="text-center">Your message has been received.</h5>
+                    <p class="text-center">Thank you {{ .contactName }}, I'll be in contact with your shortly!</p>
+                </div>
+            </div>
+            {{ end }}
+            {{ if .formErrors }}
+            <div class="row squeeze animate__animated  animate__fadeIn" id="success-error">
+                <div class="col alert alert-danger">
+                    <h5 class="text-center">There was an error sending your message.</h5>
+                    <ul>
+                        {{ range .formErrors }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+            {{ end }}
+            <div class="row squeeze contact-content">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contactName">Your name</label>
+                        <input id="contactName" type="text" name="contactName" class="form-control contact-input"
+                               placeholder="John Doe" value="{{ .contactFormNameEl }}" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmailFake" class="email">Do NOT enter an email here</label>
+                        <input id="contactEmailFake" type="email" name="contactEmailFake" class="email form-control" value=""
+                               autocomplete="off">
+                        <label for="contactEmail">Your email</label>
+                        <input id="contactEmail" type="email" name="contactEmail" class="form-control contact-input"
+                               placeholder="john@doe.com"
+                               value="{{ .contactFormEmailEl }}" required/>
+                    </div>
+                    <div class="form-group">
+                        <label id="contactFormVerificationSumLabel"
+                               for="contactFormVerificationSum">What is {{ .num1 }} + {{ .num2 }} ?</label>
+                        <input id="contactFormVerificationSum" type="number" name="contactFormVerificationSum"
+                               class="form-control contact-input" value="" required/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="contactMessage">Your message</label>
+                        <textarea id="contactMessage" name="contactMessage" class="form-control contact-input"
+                                  placeholder="Hello, I'd like to make my dream a reality..."
+                                  style="width: 100%; height: 165px;" required>{{ .contactFormMessageEl }}</textarea>
+                    </div>
+                </div>
+            </div>
+            <label hidden for="contactFormToken">Token Input Do NOT Change</label>
+            <input hidden id="contactFormToken" name="contactFormToken" type="text" value="{{ .contactToken }}"
+                   autocomplete="off"/>
+            <div class="row justify-content-center contact-content">
+                <div class="col-md-6 mb-5 mt-5">
+                    <div class="form-group text-center">
+                        <input type="submit" name="contactSubmit" id="contactSubmit" class="btnContact contact-input"
+                               value="Send Message"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+{{ end }}
