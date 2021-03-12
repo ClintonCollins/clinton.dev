@@ -83,6 +83,11 @@ func (inst *instance) Listen() error {
 	r.HandleFunc("/", inst.getIndex)
 	r.HandleFunc("/contact", inst.contact)
 
+	// favicon.ico
+	r.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, inst.frontendPath+"/static/img/favicon.ico")
+	})
+
 	// Public API
 	r.HandleFunc("/api/contact", inst.apiContact)
 
